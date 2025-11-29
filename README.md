@@ -23,7 +23,7 @@ Cross-modality matching and prediction of **perturb**ation response with labeled
 ```
 
 ## Installation
-1. `perturbot/` uses the modified `scvi-tools` and `ott` submodules which can be installed with `pip install`.
+`perturbot/` uses the modified `scvi-tools` and `ott` submodules which can be installed with `pip install`.
 ```bash
 cd scvi-tools/
 pip install .
@@ -32,6 +32,8 @@ pip install .
 cd ../perturbot
 pip install .
 ```
+## Patch applied
+1. Execute the commands in the Installation section of the repo
 
 2. At that point `perturbot` is almost empty (only __init__ and utils), to fix that, go into Perturb-OT/perturbot/perturbot, copy all submodules and paste them inside the Perturb-OT/perturbot/build/lib/perturbot folder.
 ```bash
@@ -45,7 +47,7 @@ cd perturbot/
 pip install .
 ```
 
-At this point perturbot.match should work when imported. However you'll likely hit dependency issues regarding jax and anndata:
+At this point `perturbot.match` **should work** when imported. **However** you'll likely hit dependency issues regarding **jax and anndata**:
 
 ### Fixing `jaxlib.xla_extension` error
 1. What's happening is some good old mismatch between the code in some depedencies and the updated API of JAX 0.8.0
@@ -61,7 +63,7 @@ That should solve it.
 pip install "anndata==0.10.9"
 ```
 
-That should be it ! Both perturbot.match and perturbot.predict should be importable now :D !
+**That should be it ! Both perturbot.match and perturbot.predict should be importable now :D !**
 
 ## Usage
 ```python
