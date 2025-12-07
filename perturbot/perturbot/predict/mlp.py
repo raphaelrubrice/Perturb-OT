@@ -176,7 +176,7 @@ def train(
     valid_loader = DataLoader(valid_set, batch_size=batch_size, **loader_kwargs)
     trainer = L.Trainer(
         max_epochs=max_epochs,
-        accelerator="cpu",
+        accelerator="auto",
         callbacks=[
             ProgressBar(),
             LoudEarlyStopping(monitor="val_loss", mode="min", patience=45),
