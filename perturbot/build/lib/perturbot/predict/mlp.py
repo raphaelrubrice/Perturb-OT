@@ -174,9 +174,16 @@ def train(
     )
     train_loader = DataLoader(train_set, batch_size=batch_size, **loader_kwargs)
     valid_loader = DataLoader(valid_set, batch_size=batch_size, **loader_kwargs)
+    if torch.cuda.is_available():
+        accelerator = "gpu"
+        devices = 1
+    else:
+        accelerator = "auto"
+        devices = "auto"
     trainer = L.Trainer(
         max_epochs=max_epochs,
-        accelerator="cpu",
+        accelerator=accelerator,
+        devices=devices,
         callbacks=[
             ProgressBar(),
             LoudEarlyStopping(monitor="val_loss", mode="min", patience=45),
