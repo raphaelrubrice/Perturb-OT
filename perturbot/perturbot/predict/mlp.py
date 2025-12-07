@@ -1,6 +1,6 @@
 from typing import Sequence, Dict, Union, Tuple
 from numbers import Number
-import sys, os
+import sys
 import time
 import numpy as np
 import torch
@@ -172,8 +172,6 @@ def train(
     train_set, valid_set = random_split(
         dataset, [train_set_size, valid_set_size], generator=torch_seed
     )
-    if "num_workers" not in loader_kwargs.keys():
-        loader_kwargs["num_workers"] = int(0.8*os.cpu_count())
     train_loader = DataLoader(train_set, batch_size=batch_size, **loader_kwargs)
     valid_loader = DataLoader(valid_set, batch_size=batch_size, **loader_kwargs)
     if torch.cuda.is_available():
